@@ -1,0 +1,104 @@
+@font: 'Roboto', arial;
+.activator-container {
+  display: block;
+  max-width: 850px;
+  border: 1px solid #000;
+
+  .header {
+    background: #666;
+    padding: 5px 10px;
+    h1 {
+      line-height: 1;
+      padding: 0;
+      margin: 0;
+      color: #fff;
+    }
+  }
+  .search {
+    padding: 20px 20px 0;
+    .search-area {
+      input {
+        width: 100%;
+        font: 16px/30px @font;
+        color: #000;
+        padding: 5px 10px;
+      }
+    }
+  }
+  .content {
+    padding: 0 20px 20px;
+    .box {
+      border: 1px solid #666;
+      min-height: 300px;
+      .drop-area{
+        min-height: 100%;
+      }
+      .list {
+        min-height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0 0 0 30px;
+        border: 2px dashed #fff;
+        &.dnd-drag-over {
+          border: 2px dashed #000;
+        }
+        li {
+          cursor: pointer;
+          padding: 5px 10px;
+          width: 100%;
+          border: 2px solid #fff;
+          &.dnd-drag-start {
+            -moz-transform:scale(1);
+            -webkit-transform:scale(1);
+            transform:scale(1);
+            opacity:1;
+            border: 2px dashed #000;
+          }
+          span {
+            color: #000
+          }
+          &.selected {
+            background: yellowgreen;
+            span {
+              color: #fff;
+            }
+            list-style: inherit;
+          }
+        }
+      }
+    }
+    .center-box {
+      padding: 0;
+    }
+    .list-group {
+      li {
+        width: 100%;
+        height: auto;
+        list-style: none;
+        margin: 0 auto 10px;
+        button {
+          min-height: 40px;
+          min-width: 40px;
+          background: none;
+          border: 1px solid #666;
+          outline: none;
+          text-shadow: none;
+          box-shadow: none;
+          display: block;
+          margin: auto;
+          border-radius: 40%;
+          text-align: center;
+          cursor: pointer;
+          &:hover {
+            background: yellowgreen;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+
+

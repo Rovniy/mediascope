@@ -1,0 +1,66 @@
+<div class="activator-container container-fluid">
+  <div class="row header">
+    <h1>Header</h1>
+  </div>
+  <div class="row search">
+    <div class="col-5">
+      <div class="row search-area">
+        <input name="searchText" [(ngModel)]="searchText" placeholder="Поиск..."/>
+      </div>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-5">
+      <div class="row search-area">
+        <input [(ngModel)]="activatedSearchText" placeholder="Поиск..."/>
+      </div>
+    </div>
+  </div>
+  <div class="row content">
+    <div class="col-5 box">
+      <div class="row drop-area">
+        <ul class="list"
+            dnd-droppable
+            (onDropSuccess)="$event.dragData.selected=true; deactivateSelectedItems()"
+            [dropZones]="['zone1']">
+          <li *ngFor="let item of items$ | async | nameFilter:searchText"
+              (click)="item.selected = !item.selected"
+              [class.selected]="item.selected"
+              dnd-draggable
+              [dragEnabled]="true"
+              [dragData]="item" [dropZones]="['zone2']"><span>{{item.name}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-2 center-box">
+      <ul class="list-group">
+        <li>
+          <button (click)="activateSelectedItems()"> ></button>
+        </li>
+        <li>
+          <button (click)="deactivateSelectedItems()"> <</button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-5 box">
+      <div class="row drop-area">
+        <ul class="list"
+            dnd-droppable
+            (onDropSuccess)="$event.dragData.selected=true; activateSelectedItems()"
+            [dropZones]="['zone2']">
+          <li *ngFor="let item of activatedItems$ | async| nameFilter:activatedSearchText"
+              (click)="item.selected = !item.selected"
+              [class.selected]="item.selected"
+              dnd-draggable
+              [dragEnabled]="true"
+              [dragData]="item"
+              [dropZones]="['zone1']"><span>{{item.name}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
